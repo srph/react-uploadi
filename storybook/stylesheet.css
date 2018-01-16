@@ -1,0 +1,137 @@
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-light-silver: #f9fafb;
+  --color-dark-silver: #8898aa;
+  --color-silver: #d9e3ed;
+  --color-lavender: #43458b;
+  --color-light-lavender: #6466bf;
+  --drop-shadow: 0px 2px 4px rgba(0,0,0,.1);
+  --drop-shadow-lower: 0px 4px 4px rgba(0,0,0,.1);
+  --border-radius: 4px;
+  --button-size: 24px;
+  --font-family-default: 'Fakt Pro', 'Proxima Nova', San Francisco, -apple-system, BlinkMacSystemFont, ".SFSNText-Regular", Segoe UI, Ubuntu, Helvetica, sans-serif;
+  --font-family-serif: 'Georgia', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 14px;
+  font-family: var(--font-family-default);
+}
+
+.app {
+  width: 480px;
+}
+
+.upload-box {
+  width: 320px;
+  border: 1px dashed var(--color-dark-silver);
+}
+
+.upload-box > .footer {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  text-align: center;
+  color: var(--color-dark-silver);
+  background: var(--color-silver);
+}
+
+.upload-box > .footer > .heading {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.upload-box > .footer > .sub {
+  margin: 0;
+}
+
+.upload-box > .footer > .sub > .or {
+  font-family: var(--font-family-serif);
+  font-style: italic;
+}
+
+.upload-box > .footer > .sub > .browse {
+  color: var(--color-black);
+}
+
+.attachment-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px;
+}
+
+.attachment-list > .item {
+  height: 98px;
+  width: 98px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-silver);
+}
+
+.avatar-box {
+  position: relative;
+}
+
+.avatar-box > .superpogi {
+  width: 98px;
+  height: 98px;
+  border-radius: 50%;
+  border: 2px solid var(--color-white);
+  box-shadow: var(--drop-shadow);
+}
+
+.avatar-box > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 98px;
+  height: 98px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 200ms opacity ease;
+}
+
+.avatar-box:hover > .overlay {
+  opacity: 1;
+}
+
+.button {
+  display: inline-block;
+  padding: 0 8px;
+  height: var(--button-size);
+  line-height: (var(--button-size) - 1px);
+  color: var(--color-lavender);
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: var(--color-white);
+  border: 1px solid var(--color-silver);
+  border-radius: var(--border-radius);
+  box-shadow: var(--drop-shadow);
+  transition: all .2s cubic-bezier(.06,.67,.37,.99);
+  transform: translateY(0);
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--drop-shadow-lower);
+}
+
+.button.-primary {
+  color: var(--color-white);
+  background: var(--color-lavender);
+}
+
+.button.-primary:hover {
+  background: var(--color-light-lavender);
+}

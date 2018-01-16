@@ -1,0 +1,5 @@
+.travis.yml
+.gitignore
+src
+storybook
+dist
