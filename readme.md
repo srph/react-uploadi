@@ -2,7 +2,7 @@
 The bare minimum to build file upload user interfaces.
 
 - Provides a terse interface to enable file upload.
-- Removes the effort of dealing with FileReader and the like. You may have to use `FileReader` in order to display the preview of uploaded photos.
+- Removes the effort of dealing with [FileReader](https://developer.mozilla.org/en-US/docs/Web/API/FileReader (usually needed to display the preview of uploaded photos).
 - Dropping of files is built out of the box.
 - Doesn't assume markup, styling, or template.
 
