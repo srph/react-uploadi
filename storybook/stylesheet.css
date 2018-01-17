@@ -29,6 +29,15 @@ html, body {
 
 .upload-box {
   width: 320px;
+  border: 1px dashed var(--color-silver);
+}
+
+.upload-box.-over > .footer > .sub > .drag {
+  font-weight: bold;
+  color: var(--color-black);
+}
+
+.upload-box.-over {
   border: 1px dashed var(--color-dark-silver);
 }
 
