@@ -5,7 +5,7 @@
 # React Uploadi [![npm version](https://img.shields.io/npm/v/@srph/react-uploadi.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-uploadi) [![Build Status](https://img.shields.io/travis/srph/react-uploadi.svg?style=flat-square)](https://travis-ci.org/srph/react-uploadi?branch=master)
 The bare minimum to build file upload user interfaces
 
-View [demo](https://determined-euler-6e5e9b.netlify.com/). View [examples](storybook/uploadi.js).
+View [demo](https://react-uploadi.kierb.com/). View [examples](storybook/uploadi.js).
 
 ## Why?
 This library was built to be flexible:
@@ -91,7 +91,7 @@ Here's a list of props you may use to customize the component for your use-case:
 | onFiles | `function(Array<File> files, Array<string> img)` (required) | Callback called when multiple files are selected.  |
 
 ## Setup
-You can check the [demo](https://determined-euler-6e5e9b.netlify.com/), or build it yourself locally:
+You can check the [demo](https://react-uploadi.kierb.com/), or build it yourself locally:
 
 ```bash
 npm install
