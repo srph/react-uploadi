@@ -128,7 +128,7 @@ export default App;
 View more [examples](storybook/uploadi.js).
 
 ### Reacting to dropped files
-By default, `Uploadi` reacts to dropped files. In order to display something when something is being dragged over to `Uploadi`, you may use the `over` property provided by the render prop like so:
+By default, `Uploadi` reacts to dropped files. In order to display something when something is being dragged over to `Uploadi`, you may use the `over` property provided to the render prop like so:
 
 ```js
 class App extends React.Component {
