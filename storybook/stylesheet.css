@@ -84,7 +84,7 @@ html, body {
   box-shadow: var(--drop-shadow);
 }
 
-.avatar-box > .overlay {
+.avatar-box.-default > .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -99,7 +99,36 @@ html, body {
   transition: 200ms opacity ease;
 }
 
-.avatar-box:hover > .overlay {
+.avatar-box.-default:hover > .overlay {
+  opacity: 1;
+}
+
+.avatar-box > .overlay2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 98px;
+  height: 98px;
+  background: rgba(1,220,135,0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 200ms opacity ease;
+}
+
+.avatar-box > .overlay2 > .dashed {
+  border: 2px dashed var(--color-white);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 94px;
+  width: 94px;
+  border-radius: 50%;
+}
+
+.avatar-box.-over > .overlay2 {
   opacity: 1;
 }
 

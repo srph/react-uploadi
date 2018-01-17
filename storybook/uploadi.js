@@ -1,6 +1,8 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Uploadi from '../src';
+import Uploadi from '../src'
+// HAHAHAHAHA single variablem gagago
+import c from 'classnames'
 
 storiesOf('Uploadi', module)
   .add('pogi', () => {
@@ -86,4 +88,47 @@ storiesOf('Uploadi', module)
     }
 
     return <Multiple />
+  })
+  .add('droppable', () => {
+    class Droppable extends React.Component {
+      state = {
+        // Here goes the base64 parsed event
+        image: '',
+        // Here goes the original File
+        file: null
+      }
+
+      render() {
+        const {images} = this.state
+
+        return (
+          <Uploadi onFiles={this.handleFiles}>
+            {({over, onSelect}) => {
+              return (
+                <div className={c('avatar-box', { '-default': !over, '-over': over })}>
+                  <img src={this.state.image} className="superpogi" />
+                  {!over && <div className="overlay">
+                    <button className="button" onClick={onSelect}>
+                      Browse
+                    </button>
+                  </div>}
+                  {over && <div className="overlay2">
+                    <div className="dashed" />
+                  </div>}
+                </div>
+              )
+            }}
+          </Uploadi>
+        )
+      }
+
+      handleFiles = (files, images) => {
+        this.setState({
+          file: files[0],
+          image: images[0]
+        })
+      }
+    }
+
+    return <Droppable />
   })

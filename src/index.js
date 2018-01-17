@@ -1,39 +1,47 @@
 import React from 'react'
 import T from 'prop-types'
 import reader from './reader'
-
-import {DragDropContext} from 'react-dnd'
-import HTML5Backend from 'react-dnd-html5-backend'
+import Droppable from './Droppable'
 
 class ReactUploadi extends React.Component {
   file = null;
 
   render() {
     return (
-      <div>
-        {this.props.children({
-          dragging: false,
-          onSelect: () => this.file.click()
-        })}
+      <Droppable onDrop={this.handleDrop}>
+        {({over}) =>
+          <div>
+            {this.props.children({
+              over,
+              onSelect: () => this.file.click()
+            })}
 
-        <input type="file"
-          multiple={this.props.multiple}
-          style={{ display: 'none' }}
-          ref={c => this.file = c}
-          onChange={this.handleSelect} />
-      </div>
+            <input type="file"
+              multiple={this.props.multiple}
+              style={{ display: 'none' }}
+              ref={c => this.file = c}
+              onChange={this.handleSelect} />
+          </div>
+        }
+      </Droppable>
     )
   }
 
-  handleSelect = (evt) => {
-    const files = Array.from(evt.target.files)
-
+  process(files) {
     Promise.all(files.map(file => reader(file)))
       .then(evts => {
         const results = evts.map(evt => evt.target.result);
         this.props.onFiles(files, results)
         this.file.value = null
       })
+  }
+
+  handleDrop = (files) => {
+    this.process(files)
+  }
+
+  handleSelect = (evt) => {
+    this.process(Array.from(evt.target.files))
   }
 }
 
