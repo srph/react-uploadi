@@ -2,6 +2,7 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Uploadi from '../src'
 import c from 'classnames'
+import defaultAvatar from './default.png'
 
 storiesOf('Uploadi', module)
   .add('single', () => {
@@ -14,14 +15,14 @@ storiesOf('Uploadi', module)
       }
 
       render() {
-        const {images} = this.state
+        const {image} = this.state
 
         return (
           <Uploadi onFiles={this.handleFiles}>
             {({onSelect}) => {
               return (
                 <div className="avatar-box -default">
-                  <img src={this.state.image} className="superpogi" />
+                  <img src={image || defaultAvatar} className="superpogi" />
                   <div className="overlay">
                     <button className="button" onClick={onSelect}>
                       Browse
@@ -103,14 +104,14 @@ storiesOf('Uploadi', module)
       }
 
       render() {
-        const {images} = this.state
+        const {image} = this.state
 
         return (
           <Uploadi onFiles={this.handleFiles}>
             {({over, onSelect}) => {
               return (
                 <div className={c('avatar-box', { '-default': !over, '-over': over })}>
-                  <img src={this.state.image} className="superpogi" />
+                  <img src={image || defaultAvatar} className="superpogi" />
                   {!over && <div className="overlay">
                     <button className="button" onClick={onSelect}>
                       Browse
