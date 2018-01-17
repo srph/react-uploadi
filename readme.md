@@ -74,7 +74,9 @@ class App extends React.Component {
 export default App;
 ```
 
-> **NOTE**: Regarding the `onFiles` callback prop &mdash; The first parameter contains the original [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) event _may_ need in order to upload the selected file. The second parameter contains the [encoded string (contents of the file)](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result): a [base64-encoded string](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL) if it's an image, otherwise [a text string](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText).
+> **NOTE**: Regarding the `onFiles` callback prop &mdash; The first parameter contains the original [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) event _may_ need in order to upload the selected file.
+>
+> The second parameter contains the [encoded string (contents of the file)](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result): a [base64-encoded string](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL) if it's an image, otherwise [a text string](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText).
 
 ### Multiple files
 You can make your uploader accept multiple files by passing the `multiple={true}` prop to `Uploadi`. Take note that the `onFiles` callback is slightly different: You will receive an array of `File`s and Images.
