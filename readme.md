@@ -2,8 +2,8 @@
   <img src="preview.jpg" alt="Preview">
 </div>
 
-# React Confirm [![npm version](https://img.shields.io/npm/v/@srph/react-confirm.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-confirm) [![Build Status](https://img.shields.io/travis/srph/react-confirm.svg?style=flat-square)](https://travis-ci.org/srph/react-confirm?branch=master)
-Replace native `confirm` function with yer modals.
+# React Uploadi [![npm version](https://img.shields.io/npm/v/@srph/react-confirm.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-confirm) [![Build Status](https://img.shields.io/travis/srph/react-confirm.svg?style=flat-square)](https://travis-ci.org/srph/react-confirm?branch=master)
+The bare minimum to build file upload user interfaces
 
 View [demo](https://barber-solders-33074.netlify.com/). View [examples](storybook/confirm.js).
 
@@ -11,14 +11,14 @@ View [demo](https://barber-solders-33074.netlify.com/). View [examples](storyboo
 This library was built to be flexible:
 
 - It doesn't assume markup, styling, or template.
-- It only provides the bare minimum so you could build your custom `confirm`.
+- It only provides the bare minimum so you could build your custom uploader.
 
 ## How It Works
 This library uses the render props pattern. You can read more about it [here](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
 
 ## Installation
 ```bash
-npm install @srph/react-confirm --save
+npm install @srph/react-uploadi --save
 ```
 
 ### Script tags
@@ -29,170 +29,68 @@ If you're not using a bundler like Browserify or Webpack, simply add the script 
 <script src="https://unpkg.com/@srph/react-confirm/dist/react-confirm.min.js"></script>
 ```
 
-This library is exposed as `ReactConfirm` (e.g., `ReactConfirm.confirm` and `ReactConfirm.ConfirmRoot`).
+This library is exposed as `ReactUploadi` (e.g., `<ReactUploadi />`).
 
 ## Usage
-`ConfirmRoot` must be placed on your top-most component (aka root component).
+The following lets you build a single-file uploader:
 
 ```js
 import React from 'react'
-import {confirm, ConfirmRoot} from '@srph/react-confirm'
-import Modal from './Modal'
+import Uploadi from '@srph/react-uploadi'
 
 class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <ConfirmRoot>
-          {({active, text, actions}) => (
-            <Modal isOpen={active} onRequestClose={actions.dismiss}>
-              {text}
-              <button onClick={actions.proceed}>Proceed</button>
-              <button onClick={actions.dismiss}>Dismiss</button>
-            </Modal>
-          )}
-        </ConfirmRoot>
+  state = {
+    // Here goes the base64 parsed event
+    image: '',
+    // Here goes the original File which you may
+    // need when uploading to an API / any kind of backend.
+    // In most cases, you will use formdata with it.
+    file: null
+  }
 
-        <button onClick={this.handleClick}>
-          Open Confirmation
-        </button>
-      </div>
+  render() {
+    const {images} = this.state
+
+    return (
+      <Uploadi onFiles={this.handleFiles}>
+        {({onSelect}) => {
+          return (
+            <div className="avatar-box -default">
+              <img src={this.state.image} className="img" />
+              <div className="overlay">
+                <button className="button" onClick={onSelect}>
+                  Browse
+                </button>
+              </div>
+            </div>
+          )
+        }}
+      </Uploadi>
     )
   }
 
-  handleClick() {
-    confirm(`You haven't finished your post yet. Do you want to leave without finishing?`)
-      .then(() => {
-        console.log('Proceed')
-      }, () => {
-        console.log('Dismissed')
-      })
+  handleFiles = (file, image) => {
+    this.setState({
+      file,
+      image
+    })
   }
 }
 
 export default App;
 ```
 
-### Hooks
-In case you need to check if we're confirming, like for instance, we don't want our modal to be closed when `escape` is pressed.
-
-```js
-import React from 'react'
-import {confirm} from '@srph/react-confirm'
-import MyModal from './MyModal'
-
-class App extends React.Component {
-  state = {
-    confirming: false
-  }
-
-  render() {
-    return (
-      <div>
-        <MyModal enableEscapeClose={this.state.confirming}>
-          // ...
-          <button onClick={this.handleClick}>
-            Submit Form
-          </button>
-        </MyModal>
-      </div>
-    )
-  }
-
-  handleClick() {
-    this.setState({ confirming: true })
-
-    confirm(`You haven't finished your post yet. Do you want to leave without finishing?`)
-      .then(() => {
-        this.setState({ confirming: false })
-      }, () => {
-        this.setState({ confirming: false })
-      })
-  }
-}
-```
-
-### Custom options
-If you want to pass any kind of other options, anything you pass to `confirm(opts)` except `text` is available through the render props' `options`. In the example below, we're allowing custom titles and extra actions / buttons.
-
-```js
-import React from 'react'
-import {confirm} from '@srph/react-confirm'
-import MyModal from './MyModal'
-
-class CustomTitle extends React.Component {
-  render() {
-    return (
-      <div>
-        <ConfirmRoot>
-          {({active, text, actions, options}) => (
-            <Modal isOpen={active} onRequestClose={actions.dismiss}>
-              {options.title || 'Confirmation'}
-
-              <button className="button" onClick={actions.dismiss}>Dismiss</button>
-
-              {options.buttons && options.buttons.map((button, i) =>
-                <button className="button" onClick={button.onClick}>{button.text}</button>
-              )}
-
-              <button className="button -primary" onClick={actions.proceed}>Proceed</button>
-            </Modal>
-          )}
-        </ConfirmRoot>
-
-        <button className="button" onClick={this.handleClick}>
-          Open Confirmation
-        </button>
-      </div>
-    )
-  }
-
-  handleClick() {
-    confirm({
-      title: 'Leave page?',
-      text:`You haven't finished your post yet. Do you want to leave without finishing?`
-    }).then(() => {
-      console.log('Proceed')
-    }, () => {
-      console.log('Dismissed')
-    })
-  }
-}
-```
-
-This is kept flexible as everything is up to you.
-
-View [examples](storybook/confirm.js).
+View more [examples](storybook/uploadi.js).
 
 ## API Documentation
 Here's a list of props you may use to customize the component for your use-case:
 
-### `confirm(<mixed> opts)`
-
 | Parameter  | Type | Description |
 | ----- | ---- | ----------- |
-| opts | `string` | Trigger the confirmation with the provided string. Shortcut for `confirm({ text: str })` |
-| opts | `object` | Trigger the confirmation with custom settings. All properties except `opts.text` is mapped to `options` in `children` |
-| opts.text | `string` | Text to be displayed |
-
-> **NOTE**: More on this later
-
-### ConfirmRoot
-
-| Prop  | Type | Description |
-| ----- | ---- | ----------- |
-| children | `function` | This is where you render whatever based on the state of `ConfirmRoot` |
-
-#### `children({active, text, options, actions})`
-
-| Prop  | Type | Description |
-| ----- | ---- | ----------- |
-| active | `boolean` | If a confirmation is active |
-| text | `string` | Text to be displayed |
-| options | `object` | All properties passed to `confirm` except `text` is accessible here |
-| actions | `object` | |
-| actions.proceed | `object` | Proceed event handler |
-| actions.dismiss | `object` | Dismiss event handler |
+| multiple | `boolean` | Enable multiple files to be selected. Defaults to `false`. |
+| accept | `string` | Files types you'd like to be selected. |
+| onFiles | `function(File file, string img)` (required) | Callback called when a file is selected |
+| onFiles | `function(Array<File> files, Array<string> img)` (required) | Callback called when multiple files are selected.  |
 
 ## Setup
 You can check the [demo](https://barber-solders-33074.netlify.com/), or build it yourself locally:
