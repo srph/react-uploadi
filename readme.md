@@ -55,9 +55,9 @@ class App extends React.Component {
       <Uploadi onFiles={this.handleFiles}>
         {({onSelect}) => {
           return (
-            <div className="avatar-box -default">
-              <img src={image} className="img" />
-              <button className="button" onClick={onSelect}>
+            <div>
+              {image ? <img src={image} /> : 'Select a file to upload.'}
+              <button onClick={onSelect}>
                 Browse
               </button>
             </div>
