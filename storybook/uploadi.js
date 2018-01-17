@@ -1,7 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Uploadi from '../src'
-// HAHAHAHAHA single variablem gagago
 import c from 'classnames'
 
 storiesOf('Uploadi', module)
