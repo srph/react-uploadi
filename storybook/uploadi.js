@@ -36,10 +36,10 @@ storiesOf('Uploadi', module)
         )
       }
 
-      handleFiles = (files, images) => {
+      handleFiles = (file, image) => {
         this.setState({
-          file: files[0],
-          image: images[0]
+          file,
+          image
         })
       }
     }

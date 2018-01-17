@@ -31,7 +31,11 @@ class ReactUploadi extends React.Component {
     Promise.all(files.map(file => reader(file)))
       .then(evts => {
         const results = evts.map(evt => evt.target.result);
-        this.props.onFiles(files, results)
+        if (this.props.multiple) {
+          this.props.onFiles(files, results)
+        } else {
+          this.props.onFiles(files[0], results[0])
+        }
         this.file.value = null
       })
   }
