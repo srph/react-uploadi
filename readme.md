@@ -78,6 +78,88 @@ class App extends React.Component {
 export default App;
 ```
 
+> **NOTE**: Regarding the `onFiles` callback prop &mdash; The first parameter contains the original [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) event _may_ need in order to upload the selected file. The second parameter contains the [encoded string (contents of the file)](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result): a [base64-encoded string](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL) if it's an image, otherwise [a text string](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText)
+
+### Multiple files
+You can make your uploader accept multiple files by passing the `multiple={true}` prop to `Uploadi`. Take note that the `onFiles` callback is slightly different: You will receive an array of `File`s and Images.
+
+```js
+class App extends React.Component {
+  state = {
+    images: [],
+    files: []
+  }
+
+  render() {
+    const {images} = this.state
+
+    return (
+      <Uploadi multiple onFiles={this.handleFiles}>
+        {({onSelect}) => {
+          return (
+            <div>
+              {images.length
+                ? images.map((image, i) => (
+                  <img src={image} key={i} />
+                )) : 'Select a file to upload.'
+              }
+
+              <button onClick={onSelect}>
+                Browse
+              </button>
+            </div>
+          )
+        }}
+      </Uploadi>
+    )
+  }
+
+  handleFiles = (files, images) => {
+    this.setState({
+      files,
+      images
+    })
+  }
+}
+
+export default App;
+```
+
+> **NOTE**: The `onFiles` callback prop is slightly different here. Instead of a `File` and an encoded string, you will receive array of `Files` and array of encoded strings.
+
+View more [examples](storybook/uploadi.js).
+
+### Reacting to dropped files
+By default, `Uploadi` reacts to dropped files. In order to display something, you may use the `over` property provided by the render prop like so:
+
+```js
+class App extends React.Component {
+  render() {
+    return (
+      <Uploadi multiple onFiles={this.handleFiles}>
+        {({over, onSelect}) => {
+          return (
+            <div>
+              {over && (
+                <div className="drop-overlay" />
+              )}
+            </div>
+          )
+        }}
+      </Uploadi>
+    )
+  }
+
+  handleFiles = (files, images) => {
+    //
+  }
+}
+
+export default App;
+```
+
+> **NOTE**: The `onFiles` callback prop is slightly different here. Instead of a `File` and an encoded string, you will receive array of `Files` and array of encoded strings.
+
 View more [examples](storybook/uploadi.js).
 
 ## API Documentation
@@ -87,8 +169,8 @@ Here's a list of props you may use to customize the component for your use-case:
 | ----- | ---- | ----------- |
 | multiple | `boolean` | Enable multiple files to be selected. Defaults to `false`. |
 | accept | `string` | Files types you'd like to be selected. |
-| onFiles | `function(File file, string img)` (required) | Callback called when a file is selected |
-| onFiles | `function(Array<File> files, Array<string> img)` (required) | Callback called when multiple files are selected.  |
+| onFiles | `function(File file, string img)` (required) | Callback called when a file is selected. |
+| onFiles | `function(Array<File> files, Array<string> img)` (required) | Callback called when `multiple` is `true`. |
 
 ## Setup
 You can check the [demo](https://react-uploadi.kierb.com/), or build it yourself locally:
