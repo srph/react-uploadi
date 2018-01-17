@@ -121,7 +121,7 @@ class App extends React.Component {
 export default App;
 ```
 
-> **NOTE**: The `onFiles` callback prop is slightly different here. Instead of a `File` and an encoded string, you will receive array of `Files` and array of encoded strings.
+> **NOTE**: The `onFiles` callback prop is slightly different when `multiple` is `true`. Instead of a `File` and an encoded string, you will receive array of `Files` and array of encoded strings.
 
 View more [examples](storybook/uploadi.js).
 
