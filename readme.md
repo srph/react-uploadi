@@ -1,7 +1,3 @@
-<div style="text-align: center">
-  <img src="preview.jpg" alt="Preview">
-</div>
-
 # React Uploadi [![npm version](https://img.shields.io/npm/v/@srph/react-uploadi.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-uploadi) [![Build Status](https://img.shields.io/travis/srph/react-uploadi.svg?style=flat-square)](https://travis-ci.org/srph/react-uploadi?branch=master)
 The bare minimum to build file upload user interfaces
 
