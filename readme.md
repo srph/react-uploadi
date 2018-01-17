@@ -79,6 +79,8 @@ export default App;
 >
 > The second parameter contains the [encoded string (contents of the file)](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/result): a [base64-encoded string](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL) if it's an image, otherwise [a text string](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText).
 
+View the [examples](storybook/uploadi.js).
+
 ### Multiple files
 You can make your uploader accept multiple files by passing the `multiple={true}` prop to `Uploadi`. Take note that the `onFiles` callback is slightly different: You will receive an array of `File`s and encoded strings.
 
@@ -126,8 +128,6 @@ export default App;
 
 > **NOTE**: The `onFiles` callback prop is slightly different when `multiple` is `true`. Instead of a `File` and an encoded string, you will receive array of `Files` and array of encoded strings.
 
-View more [examples](storybook/uploadi.js).
-
 ### Reacting to dropped files
 By default, `Uploadi` reacts to dropped files. In order to display something when something is being dragged over to `Uploadi`, you may use the `over` property provided to the render prop like so:
 
@@ -158,8 +158,6 @@ export default App;
 ```
 
 > **NOTE**: The `onFiles` callback prop is slightly different when `multiple` is `true`. Instead of a `File` and an encoded string, you will receive array of `Files` and array of encoded strings.
-
-View more [examples](storybook/uploadi.js).
 
 ## API Documentation
 Here's a list of props you may use to customize the component for your use-case:
