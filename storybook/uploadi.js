@@ -19,15 +19,16 @@ storiesOf('Uploadi', module)
 
         return (
           <Uploadi onFiles={this.handleFiles}>
-            {({dragging, onSelect}) => {
+            {({onSelect}) => {
               return (
-                <div className="avatar-box">
+                <div className="avatar-box -default">
                   <img src={this.state.image} className="superpogi" />
                   <div className="overlay">
                     <button className="button" onClick={onSelect}>
                       Browse
                     </button>
                   </div>
+
                 </div>
               )
             }}
@@ -45,6 +46,8 @@ storiesOf('Uploadi', module)
 
     return <Pogi />
   })
+  // This example shows you how you can display
+  // react to multiple uploaded files
   .add('multiple', () => {
     class Multiple extends React.Component {
       state = {
@@ -89,7 +92,9 @@ storiesOf('Uploadi', module)
 
     return <Multiple />
   })
-  .add('droppable', () => {
+  // This example shows you how you can display
+  // something when user attempts to drag a file.
+  .add('react to drag over', () => {
     class Droppable extends React.Component {
       state = {
         // Here goes the base64 parsed event
