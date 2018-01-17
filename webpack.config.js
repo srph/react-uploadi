@@ -19,6 +19,12 @@ module.exports = {
       commonjs2: 'react-dom',
       commonjs: 'react-dom',
       amd: 'react-dom'
+    },
+    'react-dnd': {
+      root: 'ReactDND',
+      commonj2: 'react-dnd',
+      commonjs: 'react-dnd',
+      amd: 'react-dnd'
     }
   },
 
