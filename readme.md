@@ -4,16 +4,11 @@ The bare minimum to build file upload user interfaces
 - Provides a terse interface to enable file upload.
 - Removes the effort of dealing with FileReader and the like. You may have to use `FileReader` in order to display the preview of uploaded photos.
 - Dropping of files is built out of the box.
+- Doesn't assume markup, styling, or template.
 
 Unlike [Dropzone.js](http://www.dropzonejs.com/), Uploadi does not handle the actual uploading of the files to a 3rd-party service / API.
 
 View [demo](https://react-uploadi.kierb.com/). View [examples](storybook/uploadi.js).
-
-## Why?
-This library was built to be flexible:
-
-- It doesn't assume markup, styling, or template.
-- It only provides the bare minimum so you could build your custom uploader.
 
 ## How It Works
 This library uses the render props pattern. You can read more about it [here](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
