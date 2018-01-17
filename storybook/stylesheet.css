@@ -64,11 +64,14 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 32px;
+  padding-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .attachment-list > .item {
   height: 98px;
   width: 98px;
+  margin-bottom: 16px;
   border-radius: var(--border-radius);
   border: 1px solid var(--color-silver);
 }

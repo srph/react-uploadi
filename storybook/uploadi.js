@@ -64,11 +64,11 @@ storiesOf('Uploadi', module)
             {({dragging, onSelect}) => {
               return (
                 <div className="upload-box">
-                  <div className="attachment-list">
+                  {Boolean(images.length) && <div className="attachment-list">
                     {Boolean(images.length) && images.map((image, i) => {
                       return <img src={image} className="item" key={i} />
                     })}
-                  </div>
+                  </div>}
 
                   <div className="footer">
                     <h1 className="heading">Drop Files</h1>
