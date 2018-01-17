@@ -111,3 +111,6 @@ npm run bundle
 ```
 npm run storybook:publish
 ```
+
+## Attribution
+Big thanks to [Pavlo Tyshchuk](https://dribbble.com/pavlotyschuk) for his [Free User pics](https://dribbble.com/shots/1938508-Free-User-pics) used in the examples.
