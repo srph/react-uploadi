@@ -3,8 +3,8 @@ var path = require('path')
 
 module.exports = {
   entry: {
-    'react-confirm': './src/index.js',
-    'react-confirm.min': './src/index.js'
+    'react-uploadi': './src/index.js',
+    'react-uploadi.min': './src/index.js'
   },
 
   externals: {
@@ -27,7 +27,7 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
     libraryTarget: 'umd',
-    library: 'ReactConfirm',
+    library: 'ReactUploadi',
   },
 
   plugins: [
