@@ -1,6 +1,12 @@
 # React Uploadi [![npm version](https://img.shields.io/npm/v/@srph/react-uploadi.svg?style=flat-square)](https://npmjs.com/packages/@srph/react-uploadi) [![Build Status](https://img.shields.io/travis/srph/react-uploadi.svg?style=flat-square)](https://travis-ci.org/srph/react-uploadi?branch=master)
 The bare minimum to build file upload user interfaces
 
+- Provides a terse interface to enable file upload.
+- Removes the effort of dealing with FileReader and the like. You may have to use `FileReader` in order to display the preview of uploaded photos.
+- Dropping of files is built out of the box.
+
+Unlike [Dropzone.js](http://www.dropzonejs.com/), Uploadi does not handle the actual uploading of the files to a 3rd-party service / API.
+
 View [demo](https://react-uploadi.kierb.com/). View [examples](storybook/uploadi.js).
 
 ## Why?
