@@ -49,19 +49,17 @@ class App extends React.Component {
   }
 
   render() {
-    const {images} = this.state
+    const {image} = this.state
 
     return (
       <Uploadi onFiles={this.handleFiles}>
         {({onSelect}) => {
           return (
             <div className="avatar-box -default">
-              <img src={this.state.image} className="img" />
-              <div className="overlay">
-                <button className="button" onClick={onSelect}>
-                  Browse
-                </button>
-              </div>
+              <img src={image} className="img" />
+              <button className="button" onClick={onSelect}>
+                Browse
+              </button>
             </div>
           )
         }}
