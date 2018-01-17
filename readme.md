@@ -26,7 +26,7 @@ If you're not using a bundler like Browserify or Webpack, simply add the script 
 
 ```html
 <!-- Script tags for React and other libraries -->
-<script src="https://unpkg.com/@srph/react-confirm/dist/react-confirm.min.js"></script>
+<script src="https://unpkg.com/@srph/react-uploadi/dist/react-uploadi.min.js"></script>
 ```
 
 This library is exposed as `ReactUploadi` (e.g., `<ReactUploadi />`).
