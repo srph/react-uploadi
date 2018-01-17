@@ -5,7 +5,7 @@ import Uploadi from '../src'
 import c from 'classnames'
 
 storiesOf('Uploadi', module)
-  .add('pogi', () => {
+  .add('single', () => {
     class Pogi extends React.Component {
       state = {
         // Here goes the base64 parsed event
