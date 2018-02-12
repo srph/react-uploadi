@@ -8,7 +8,7 @@ Build upload UIs with dropzone and previews out of the box.
 
 **Most importantly**, unlike [Dropzone.js](http://www.dropzonejs.com/), Uploadi does not handle the actual uploading of the files to a 3rd-party service / API. This means that you will have to handle ajax, maintaining the loading, progress, and error state by yourself.
 
-View [demo](https://react-uploadi.kierb.com/). View [examples](storybook/uploadi.js).
+Although Uploadi was meant for advanced use-cases, you are not alone by all means. Check out the [online examples](https://react-uploadi.kierb.com/) or view its [source code](storybook/uploadi.js).
 
 ## How It Works
 This library uses the render props pattern. You can read more about it [here](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
@@ -50,16 +50,14 @@ class App extends React.Component {
 
     return (
       <Uploadi onFiles={this.handleFiles}>
-        {({onSelect}) => {
-          return (
-            <div>
-              {image ? <img src={image} /> : 'Select a file to upload.'}
-              <button onClick={onSelect}>
-                Browse
-              </button>
-            </div>
-          )
-        }}
+        {({onSelect}) => (
+          <div>
+            {image ? <img src={image} /> : 'Select a file to upload.'}
+            <button onClick={onSelect}>
+              Browse
+            </button>
+          </div>
+        )}
       </Uploadi>
     )
   }
@@ -96,21 +94,19 @@ class App extends React.Component {
 
     return (
       <Uploadi multiple onFiles={this.handleFiles}>
-        {({onSelect}) => {
-          return (
-            <div>
-              {images.length
-                ? images.map((image, i) => (
-                  <img src={image} key={i} />
-                )) : 'Select a file to upload.'
-              }
+        {({onSelect}) => (
+          <div>
+            {images.length
+              ? images.map((image, i) => (
+                <img src={image} key={i} />
+              )) : 'Select a file to upload.'
+            }
 
-              <button onClick={onSelect}>
-                Browse
-              </button>
-            </div>
-          )
-        }}
+            <button onClick={onSelect}>
+              Browse
+            </button>
+          </div>
+        )}
       </Uploadi>
     )
   }
@@ -136,15 +132,13 @@ class App extends React.Component {
   render() {
     return (
       <Uploadi multiple onFiles={this.handleFiles}>
-        {({over, onSelect}) => {
-          return (
-            <div>
-              {over && (
-                <div className="drop-overlay" />
-              )}
-            </div>
-          )
-        }}
+        {({over, onSelect}) => (
+          <div>
+            {over && (
+              <div className="drop-overlay" />
+            )}
+          </div>
+        )}
       </Uploadi>
     )
   }
