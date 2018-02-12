@@ -6,7 +6,7 @@ Build upload UIs with dropzone and previews out of the box.
 - Dropping of files is built out of the box.
 - Doesn't assume markup, styling, or template.
 
-**Most importantly**, Unlike [Dropzone.js](http://www.dropzonejs.com/), Uploadi does not handle the actual uploading of the files to a 3rd-party service / API. This means that you will have to handle ajax, maintaining the loading, progress, and error state.
+**Most importantly**, Unlike [Dropzone.js](http://www.dropzonejs.com/), Uploadi does not handle the actual uploading of the files to a 3rd-party service / API. This means that you will have to handle ajax, maintaining the loading, progress, and error state by yourself.
 
 View [demo](https://react-uploadi.kierb.com/). View [examples](storybook/uploadi.js).
 
