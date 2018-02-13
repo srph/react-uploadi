@@ -278,7 +278,7 @@ storiesOf('Uploadi', module)
   // Inspect the XHR logs in your browser's DevTools.
   // Thanks to file.io!
   .add('actual file upload', () => {
-    class FullBlownFileUpload extends React.Component {
+    class SingleFullBlownFileUpload extends React.Component {
       state = {
         // Here goes the base64 parsed event
         image: '',
@@ -290,7 +290,7 @@ storiesOf('Uploadi', module)
 
       render() {
         const {image} = this.state
-
+        console.log(this.state.loading)
         return (
           <Uploadi onFiles={this.handleFiles}>
             {({over, onSelect}) => {
@@ -301,7 +301,7 @@ storiesOf('Uploadi', module)
                     '-loading': this.state.loading
                   })}>
                   <img src={image || defaultAvatar} className="superpogi" />
-                  {!over && <div className="overlay">
+                  {!this.state.loading && !over && <div className="overlay">
                     <button className="button" onClick={onSelect}>
                       Browse
                     </button>
@@ -317,9 +317,14 @@ storiesOf('Uploadi', module)
       }
 
       handleFiles = (file, image) => {
+        if (this.state.loading) {
+          return
+        }
+
         this.setState({
           file,
-          image
+          image,
+          loading: true
         })
 
         const payload = new FormData()
@@ -339,7 +344,7 @@ storiesOf('Uploadi', module)
       }
     }
 
-    return <FullBlownFileUpload />
+    return <SingleFullBlownFileUpload />
   })
 
   // This example shows you how you can do a full-blown file-upload

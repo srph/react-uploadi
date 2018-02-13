@@ -132,6 +132,7 @@ html, body {
 
 .avatar-box {
   position: relative;
+  transition: 300ms opacity ease;
 }
 
 .avatar-box > .superpogi {
@@ -188,6 +189,10 @@ html, body {
 
 .avatar-box.-over > .overlay2 {
   opacity: 1;
+}
+
+.avatar-box.-loading {
+  opacity: 0.4;
 }
 
 .button {
