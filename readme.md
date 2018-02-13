@@ -8,7 +8,7 @@ Build upload UIs with dropzone and previews out of the box.
 
 **Most importantly**, unlike [Dropzone.js](http://www.dropzonejs.com/), Uploadi does not handle the actual uploading of the files to a 3rd-party service / API. This means that you will have to handle ajax, maintaining the loading, progress, and error state by yourself.
 
-Although Uploadi was meant for advanced use-cases, you are not alone by all means. Check out the [online examples](https://react-uploadi.kierb.com/) or view its [source code](storybook/uploadi.js).
+Although Uploadi was meant for advanced use-cases, you are not alone by all means. Check out the [online examples](https://react-uploadi.kierb.com/) or view its [source code](storybook/uploadi.js). It showcases Uploadi's power from the simplest case to a full-blown file upload.
 
 ## How It Works
 This library uses the render props pattern. You can read more about it [here](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).

@@ -78,15 +78,41 @@ html, body {
 }
 
 .attachment-list > .item {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.attachment-list > .item > .thumb {
   height: 98px;
   width: 98px;
   margin-bottom: 16px;
   border-radius: var(--border-radius);
   border: 1px solid var(--color-silver);
   transition: 200ms opacity ease;
+  transition: 200ms opacity ease;
 }
 
-.attachment-list > .item.-loading {
+.attachment-list > .item > .error {
+  position: absolute;
+  bottom: 28px;
+  right: 8px;
+  height: 8px;
+  width: 8px;
+  background: red;
+  border-radius: 50%;
+}
+
+.attachment-list > .item > .success {
+  position: absolute;
+  bottom: 28px;
+  right: 8px;
+  height: 8px;
+  width: 8px;
+  background: green;
+  border-radius: 50%;
+}
+
+.attachment-list > .item.-loading > .thumb {
   opacity: 0.4;
 }
 
