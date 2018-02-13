@@ -79,7 +79,11 @@ html, body {
 
 .attachment-list > .item {
   position: relative;
+  height: 98px;
+  width: 98px;
   margin-bottom: 16px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 
 .attachment-list > .item > .thumb {
@@ -94,7 +98,7 @@ html, body {
 
 .attachment-list > .item > .error {
   position: absolute;
-  bottom: 28px;
+  bottom: 8px;
   right: 8px;
   height: 8px;
   width: 8px;
@@ -104,12 +108,22 @@ html, body {
 
 .attachment-list > .item > .success {
   position: absolute;
-  bottom: 28px;
+  bottom: 8px;
   right: 8px;
   height: 8px;
   width: 8px;
   background: green;
   border-radius: 50%;
+}
+
+.attachment-list > .item > .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #59addf;
+  height: 2px;
+  width: 0;
+  transition: 1000ms ease all;
 }
 
 .attachment-list > .item.-loading > .thumb {

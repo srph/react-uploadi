@@ -365,10 +365,7 @@ storiesOf('Uploadi', module)
         // { '5': 0, '6': 32 }
         // To simulate this, easiest way is to upload many photos at once
         // since file.io throttles request (like 5 max connetions every second).
-        error: {},
-        // Here, we have an object that contains the ID of our images that have been uploaded.
-        // { '5': 0, '6': 32 }
-        success: {}
+        error: {}
       }
 
       render() {
@@ -386,8 +383,13 @@ storiesOf('Uploadi', module)
                           '-loading': this.state.progress[image.id]
                         })} key={i}>
                           <img src={image.url} className='thumb' />
+
                           {this.state.error[image.id] && (
                             <div className='error' />
+                          )}
+
+                          {Boolean(this.state.progress[image.id]) && (
+                            <div className='progress' style={{ width: this.state.progress[image.id] }} />
                           )}
 
                           {!this.state.error[image.id] && !this.state.progress[image.id] && (
@@ -417,7 +419,7 @@ storiesOf('Uploadi', module)
         })
 
         // Assign ids to the progress state
-        // { '1': true, '2': true, '3': true }
+        // { '1': 0, '2': 0, '3': 0 }
         const progress = {}
         images.forEach(image => {
           progress[image.id] = 0
@@ -436,20 +438,20 @@ storiesOf('Uploadi', module)
           axios.post(
             'https://file.io',
             payload,
-            { onUploadProgress: evt => this.handleProgress(id, evt) }
+            { onUploadProgress: evt => this.handleProgress(image.id, evt) }
           ).then(res => {
             const progress = { ...this.state.progress }
             delete progress[image.id]
 
             this.setState({
-              progress,
-              success: { ...this.state.success, [image.id]: true }
+              progress
             })
           }).catch(err => {
             const progress = { ...this.state.progress }
             delete progress[image.id]
 
             this.setState({
+              progress,
               error: { ...this.state.error, [image.id]: true }
             })
           })
