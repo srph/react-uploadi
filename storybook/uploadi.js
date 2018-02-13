@@ -96,6 +96,7 @@ storiesOf('Uploadi', module)
 
     return <Multiple />
   })
+
   // This example shows you how you can display
   // something when user attempts to drag a file.
   .add('react to drag over', () => {
@@ -191,9 +192,74 @@ storiesOf('Uploadi', module)
     return <MultipleDragOver />
   })
 
+  // This example shows you how you can add a loading state,
+  // and disabling the uploader while loading.
+  .add('loading state', () => {
+    class Droppable extends React.Component {
+      state = {
+        // Here goes the base64 parsed event
+        image: '',
+        // Here goes the original File
+        file: null,
+        // ...
+        loading: false
+      }
+
+      render() {
+        const {image} = this.state
+
+        return (
+          <Uploadi onFiles={this.handleFiles}>
+            {({over, onSelect}) => {
+              return (
+                <div className={c('avatar-box', {
+                    '-default': !over,
+                    '-over': over,
+                    '-loading': this.state.loading
+                  })}>
+                  <img src={image || defaultAvatar} className="superpogi" />
+                  {!this.state.loading && !over && <div className="overlay">
+                    <button className="button" onClick={onSelect}>
+                      Browse
+                    </button>
+                  </div>}
+                  {over && <div className="overlay2">
+                    <div className="dashed" />
+                  </div>}
+                </div>
+              )
+            }}
+          </Uploadi>
+        )
+      }
+
+      handleFiles = (file, image) => {
+        if (this.state.loading) {
+          return
+        }
+
+        this.setState({
+          file,
+          image,
+          loading: true
+        })
+
+        this.setState({
+          loading: true
+        })
+
+        ajax().then(() => {
+          this.setState({ loading: false })
+        })
+      }
+    }
+
+    return <Droppable />
+  })
+
   // This example shows you how you can add a loading state.
   // @see https://medium.com/@srph/react-maintaining-state-for-collections-80a1d9615886
-  .add('loading state for multiple uploads', () => {
+  .add('loading state (multiple)', () => {
     // We'll have a simple counter here
     // to assign ids for each selected file
     let id = 0
@@ -290,7 +356,7 @@ storiesOf('Uploadi', module)
 
       render() {
         const {image} = this.state
-        console.log(this.state.loading)
+
         return (
           <Uploadi onFiles={this.handleFiles}>
             {({over, onSelect}) => {
